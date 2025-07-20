@@ -1,7 +1,9 @@
 # SSH-Remote-Server-Setup
 This is a very simple project where the goal is to demonstrate how to add public SSH keys to a remote server. Project Link: [Here](https://roadmap.sh/projects/ssh-remote-server-setup)
 
-For this project, I am using a droptlet on [Digital Ocean](digitalocean.com).
+For this project, I am using a droplet on [Digital Ocean](digitalocean.com).
+
+The cost of this project should not exceed a few bucks. I rented the cheapest option on Digital Ocean.
 
 # Connecting to server
 When creating a droplet, you will be asked to provide your public key:
@@ -24,7 +26,7 @@ Open a terminal on your local host and type the following command:
 ssh-keygen
 ```
 
-When you are asked to provide a path to save your keys, provide a custom path. Ex. `~/.ssh/user1`
+You can press `Enter` to accept the default path (`~/.ssh/id_rsa`), or you can specify a custom path like `~/.ssh/user1` if you're managing multiple keys.
 
 Once you hit enter, the keys will be generated.
 
@@ -54,7 +56,10 @@ Two requirements:
 * Droplet IP Address
 
 ```
-ssh -i [private_key_path] root@[ip_address]
+// ssh -i [private_key_path] root@[ip_address]
+
+// Example
+ssh -i ~/.ssh/user1 root@123.123.123.123
 ```
 
 Press enter and you should be now connected.
@@ -62,3 +67,6 @@ Press enter and you should be now connected.
 Repeat steps to add another key pair.
 
 # Fail2Ban
+Fail2Ban is a daemon protecting your system from bruteforce attacks. I recommend following this guide for quick setup. 
+
+Guide : [Using Fail2Ban for SSH Brute-force Protection](https://www.linode.com/docs/guides/how-to-use-fail2ban-for-ssh-brute-force-protection/)
